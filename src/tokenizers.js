@@ -36,7 +36,7 @@ import { max, min, round } from './utils/maths.js';
 import { Tensor } from './utils/tensor.js';
 import 'text-encoding-polyfill'
 
-import { env } from './env.js';
+// import { env } from './env.js';
 
 import {
     PriorityQueue,
