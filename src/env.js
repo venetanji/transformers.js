@@ -33,7 +33,7 @@ const { env: onnx_env } = ONNX;
 const VERSION = '2.17.1';
 
 // Check if various APIs are available (depends on environment)
-const IS_REACT_NATIVE = typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+const IS_REACT_NATIVE = true;
 const WEB_CACHE_AVAILABLE = typeof self !== 'undefined' && 'caches' in self;
 const FS_AVAILABLE = !isEmpty(fs) || IS_REACT_NATIVE; // check if file system is available
 const PATH_AVAILABLE = !isEmpty(path); // check if path is available
@@ -43,10 +43,11 @@ const RUNNING_LOCALLY = FS_AVAILABLE && PATH_AVAILABLE;
 
 let localPath = './';
 if (IS_REACT_NATIVE) {
-    localPath = fs.DocumentDirectoryPath;
+    localPath = fs.CachesDirectoryPath;
 } else if (RUNNING_LOCALLY) {
-    localPath = path.dirname(path.dirname(url.fileURLToPath(import.meta.url)));
+    //localPath = path.dirname(path.dirname(url.fileURLToPath(import.meta.url)));
 }
+
 
 // Only used for environments with access to file system
 const DEFAULT_CACHE_DIR = RUNNING_LOCALLY
